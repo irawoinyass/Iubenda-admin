@@ -80,6 +80,7 @@
           <div class="card">
             <div class="card-header">
               <h2>Record</h2>
+              <input type="text" placeholder="Search" v-model="search" />
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -94,7 +95,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="user in people" :key="user.people_id">
+                    <tr v-for="user in filterData" :key="user.people_id">
                       <td>{{ user.row_id }}</td>
                       <td>{{ user.name }}</td>
                       <td>{{ user.position }}</td>
@@ -128,6 +129,7 @@ export default {
   name: "peopleList",
   data() {
     return {
+      search: "",
       people: [],
     };
   },
@@ -165,6 +167,13 @@ export default {
     } else {
       this.loadData();
     }
+  },
+  computed: {
+    filterData() {
+      return this.people.filter((item) =>
+        item.name.toLowerCase().includes(this.search.toLowerCase())
+      );
+    },
   },
 };
 </script>

@@ -80,6 +80,7 @@
           <div class="card">
             <div class="card-header">
               <h2>Record</h2>
+              <input type="text" v-model="search" placeholder="Search" />
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -94,7 +95,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="company in companys" :key="company.company_id">
+                    <tr v-for="company in filterData" :key="company.company_id">
                       <td>{{ company.row_id }}</td>
                       <td>{{ company.company_name }}</td>
                       <td>{{ company.people }}</td>
@@ -128,6 +129,7 @@ export default {
   name: "companyList",
   data() {
     return {
+      search: "",
       companys: [],
     };
   },
@@ -165,6 +167,13 @@ export default {
     } else {
       this.loadData();
     }
+  },
+  computed: {
+    filterData() {
+      return this.companys.filter((item) =>
+        item.company_name.toLowerCase().includes(this.search.toLowerCase())
+      );
+    },
   },
 };
 </script>
