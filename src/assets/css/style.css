@@ -252,6 +252,13 @@ main {
     grid-template-columns: 65% auto;
 }
 
+.recent-grid-others {
+    margin-top: .3rem;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 100% auto;
+}
+
 .card {
     background: #fff;
     border-radius: 5px;
@@ -529,6 +536,10 @@ tr td:last-child {
     .recent-grid {
         grid-template-columns: 60% 40%;
     }
+
+    .recent-grid-others {
+        grid-template-columns: 60% 40%;
+    }
 }
 
 
@@ -539,6 +550,10 @@ tr td:last-child {
     }
 
     .recent-grid {
+        grid-template-columns: 100%;
+    }
+
+    .recent-grid-others {
         grid-template-columns: 100%;
     }
 
@@ -668,6 +683,17 @@ select {
 }
 
 .main_form input[type=email],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.main_form input[type=number],
 select {
     width: 100%;
     padding: 12px 20px;
