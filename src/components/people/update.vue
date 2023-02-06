@@ -238,11 +238,6 @@ export default {
       this.$router.push({ name: "LogIn" });
     },
     async loadData() {
-      let tokens = localStorage.getItem("tokens");
-      if (tokens == null) {
-        this.$router.push({ name: "LogIn" });
-      }
-
       const result = await axios.get(
         "http://localhost/iubenda_backend/api/admin/company/list.php"
       );
@@ -268,7 +263,12 @@ export default {
     },
   },
   mounted() {
-    this.loadData();
+    let tokens = localStorage.getItem("tokens");
+    if (tokens == null) {
+      this.$router.push({ name: "LogIn" });
+    } else {
+      this.loadData();
+    }
   },
 };
 </script>

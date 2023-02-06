@@ -194,15 +194,12 @@ export default {
       localStorage.clear();
       this.$router.push({ name: "LogIn" });
     },
-    loadData() {
-      let tokens = localStorage.getItem("tokens");
-      if (tokens == null) {
-        this.$router.push({ name: "LogIn" });
-      }
-    },
   },
   mounted() {
-    this.loadData();
+    let tokens = localStorage.getItem("tokens");
+    if (tokens == null) {
+      this.$router.push({ name: "LogIn" });
+    }
   },
 };
 </script>

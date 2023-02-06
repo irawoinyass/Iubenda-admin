@@ -265,14 +265,15 @@ export default {
       this.people_data = result.data.people_data.data;
 
       ///////
-      let tokens = localStorage.getItem("tokens");
-      if (tokens == null) {
-        this.$router.push({ name: "LogIn" });
-      }
     },
   },
   mounted() {
-    this.loadData();
+    let tokens = localStorage.getItem("tokens");
+    if (tokens == null) {
+      this.$router.push({ name: "LogIn" });
+    } else {
+      this.loadData();
+    }
   },
 };
 </script>
