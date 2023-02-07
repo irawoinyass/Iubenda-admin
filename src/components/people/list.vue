@@ -79,7 +79,20 @@
         <div class="projects">
           <div class="card">
             <div class="card-header">
-              <h2>Record</h2>
+              <h2>
+                Record - <small>sort: </small>
+                <i
+                  class="fa fa-arrow-up"
+                  @click="sortHighest"
+                  style="color: blue"
+                ></i
+                >&nbsp;
+                <i
+                  class="fa fa-arrow-down"
+                  @click="sortLowest"
+                  style="color: red"
+                ></i>
+              </h2>
               <input type="text" placeholder="Search" v-model="search" />
             </div>
             <div class="card-body">
@@ -158,6 +171,12 @@ export default {
       );
       this.people = result.data.data;
       // console.warn(result.data.data);
+    },
+    sortLowest() {
+      this.people.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+    },
+    sortHighest() {
+      this.people.sort((a, b) => (a.rating < b.rating ? 1 : -1));
     },
   },
   mounted() {
